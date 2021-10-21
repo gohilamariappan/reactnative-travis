@@ -1,14 +1,10 @@
-/**
- * @format
- */
-
-import 'react-native';
 import React from 'react';
-import App from '../App';
+import {render} from '@testing-library/react-native';
+import Hello from '../App';
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
-
-it('renders correctly', () => {
-  renderer.create(<App />);
+describe('Hello', () => {
+  it('renders the correct message', () => {
+    const {queryByText} = render(<Hello />);
+    expect(queryByText('Hello, world!')).not.toBeNull();
+  });
 });
